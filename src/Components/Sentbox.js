@@ -1,14 +1,49 @@
-import React from "react";
 import { useSelector } from "react-redux";
-
-function Sentbox() {
-  const selector=useSelector((state)=>state.emailState.items)
-  console.log(selector)
+import Card from "react-bootstrap/Card";
+import Sentboxdisplay from "./Sentboxdisplay";
+const Send = () => {
+  const items = useSelector((state) => state.emailState.items);
+  const userEmail = useSelector((state) => state.emailState.userMail);
+  console.log(items)
   return (
-    <div style={{ marginLeft: '28rem', marginRight: 'auto', maxWidth: '800px', padding: '20px' }}>
-          hi
+    <div
+      style={{
+        backgroundColor: "#9575CD",
+        height: "91vh",
+        display: "flex",
+      }}
+    >
+      <Card
+        style={{
+          width: "105rem",
+          backgroundColor: "#E6E6FA",
+          marginLeft: "16px",
+          height: "700px",
+        }}
+      >
+        <Card.Body>
+          <Card.Title style={{ textAlign: "center" }}>
+            <strong>Send</strong>
+          </Card.Title>
+          <Card.Text>
+            {items.map((item) => {
+              if (userEmail === item.sendEmailFrom && item.draft === false) {
+                return (
+                  <Sentboxdisplay
+                    key={item.id}
+                    id={item.id}
+                    variant={item.clicked}
+                    email={item.sendEmailTo}
+                    subject={item.Subject}
+                    description={item.Description}
+                  />
+                );
+              }
+            })}
+          </Card.Text>
+        </Card.Body>
+      </Card>
     </div>
-  )
-}
-
-export default Sentbox;
+  );
+};
+export default Send;

@@ -5,6 +5,7 @@ import Inboxdisplay from "./Inboxdisplay";
 function Inbox() {
   const items = useSelector((state) => state.emailState.items);
   const userEmail = useSelector((state) => state.emailState.userMail);
+  console.log(items)
   return (
     <div
       style={{
@@ -26,9 +27,9 @@ function Inbox() {
           <Card.Title style={{ textAlign: "center" }}>
             <strong>Inbox</strong>
           </Card.Title>
-          <Card.Text>
+         <Card.Text> 
           {items.map((item) => {
-              if (userEmail === item.sendEmailTo && item.forDraft == false) {
+              if (userEmail === item.sendEmailTo && item.draft === false) {
                 return (
                   <Inboxdisplay
                     key={item.id}
@@ -40,8 +41,11 @@ function Inbox() {
                   />
                 );
               }
-            })}
-          </Card.Text>
+              else{
+                return <h2>hono</h2>
+              }
+              })}
+           </Card.Text>
         </Card.Body>
       </Card>
     </div>

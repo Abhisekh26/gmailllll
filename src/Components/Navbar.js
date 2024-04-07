@@ -7,7 +7,11 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 import Offcanvas from 'react-bootstrap/Offcanvas';
 function Navebar() {
-  function signOutHandler(){}
+  function signOutHandler(){
+    localStorage.removeItem('userEmail')
+    localStorage.removeItem('idToken')
+    window.location.href="/login"
+  }
  return (
     <div>
 

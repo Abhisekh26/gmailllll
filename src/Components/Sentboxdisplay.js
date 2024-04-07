@@ -4,19 +4,20 @@ import { Button, Col, Container, Row } from "react-bootstrap";
 
 import { useDispatch, useSelector } from "react-redux";
 import { EmailSliceActions } from "../Data/Emailstore";
-const Inboxdisplay = (props) => {
+
+
+const Sentboxdisplay = (props) => {
   const dispatch = useDispatch();
   const items = useSelector((state) => state.emailState.items);
-
+ console.log(props)
   const handleItemClick = () => {
     dispatch(EmailSliceActions.clickedUpdate(props.id));
+    
   };
 
   const handleDelete = (id) => {
     dispatch(EmailSliceActions.deleteMail(id));
   };
-  
-  console.log(props)
 
   return (
     <div style={{ marginBottom: "20px" }}>
@@ -60,4 +61,4 @@ const Inboxdisplay = (props) => {
     </div>
   );
 };
-export default Inboxdisplay;
+export default Sentboxdisplay;
