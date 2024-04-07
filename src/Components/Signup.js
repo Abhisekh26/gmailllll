@@ -8,7 +8,36 @@ import { useRef } from "react";
 function Signup() {
     const emailref=useRef()
     const passwordref=useRef()
-    const signUpHandler= async()=>{}
+    const signUpHandler= async()=>{
+      const email=emailref.current.value
+      const password=passwordref.current.value
+      if(!email.includes('@'))
+          alert("Enter a valid email")
+          if(password.length<=5)
+              alert("password is weak")
+          
+      const data=await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyA5f4xVykU56hJG_XJDXG6fmYUiwr1v7C8",{
+          method:"POST",
+          body:JSON.stringify({
+              email:email,
+              password:password,
+              returnSecureToken:true
+          }),
+          headers: {
+              "Content-Type": "application/json",
+            },
+  
+      })
+  if(data.ok){
+      emailref.current.value=""
+      passwordref.current.value=""
+      alert("Welcome User")
+      window.location.href="/signin"
+  }
+  else {
+      alert("Authentication Failed")
+  }
+    }
     
   return (
     <div style={{ backgroundColor: "#f1f3f4", minHeight: "100vh" }}>

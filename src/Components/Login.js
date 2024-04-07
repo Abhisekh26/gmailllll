@@ -11,8 +11,35 @@ function Login() {
     const emailref=useRef()
     const passwordref=useRef()
     
-   
-    const signInHandler = async()=>{}
+   const signInHandler = async()=>{
+      const email=emailref.current.value
+      const password=passwordref.current.value
+      if(!email.includes("@")){
+          alert("enter a valid email")
+      }
+      const data = await fetch("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyA5f4xVykU56hJG_XJDXG6fmYUiwr1v7C8",{
+          method:"POST",
+          body:JSON.stringify({
+              email:email,
+              password:password,
+              returnSecureToken:true
+          }),
+          headers: {
+              "Content-Type": "application/json",
+            },
+      })
+      if(data.ok){
+          const result=await data.json()
+          console.log(result.idToken)
+          localStorage.setItem('idToken',result.idToken)
+          
+          
+          
+          //  window.location.href="/compose"
+      }
+  }
+
+
     
 
   return (
