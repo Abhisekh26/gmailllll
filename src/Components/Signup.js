@@ -32,7 +32,7 @@ function Signup() {
       emailref.current.value=""
       passwordref.current.value=""
       alert("Welcome User")
-      window.location.href="/signin"
+      window.location.href="/login"
   }
   else {
       alert("Authentication Failed")

@@ -3,6 +3,7 @@ import { createBrowserRouter,RouterProvider } from "react-router-dom";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
+import Compose from "./Components/Compose";
 function App() {
   var appRouter=createBrowserRouter([
     {
@@ -16,7 +17,10 @@ function App() {
        {
         path:"/signup",
         element:<Signup></Signup>
-
+       },
+       {
+        path:'/compose',
+        element:<Compose></Compose>
        }
       ]
       

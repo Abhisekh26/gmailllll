@@ -5,11 +5,15 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useRef } from "react";
-
+import { useDispatch,useSelector } from "react-redux";
+import { tokenSliceActions } from "../Data/Tokenslice";
 
 function Login() {
     const emailref=useRef()
     const passwordref=useRef()
+    const dispatch=useDispatch()
+    const selector=useSelector((state)=>state.loginstate.loggedIn)
+    console.log(selector)
     
    const signInHandler = async()=>{
       const email=emailref.current.value
@@ -32,10 +36,10 @@ function Login() {
           const result=await data.json()
           console.log(result.idToken)
           localStorage.setItem('idToken',result.idToken)
+          dispatch(tokenSliceActions.logIn(result.idToken))
           
           
-          
-          //  window.location.href="/compose"
+         window.location.href="/compose"
       }
   }
 

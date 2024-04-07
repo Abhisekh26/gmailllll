@@ -3,7 +3,7 @@ import tokenSlice from "./Tokenslice";
 
 const storee=configureStore({
     reducer:{
-        login:tokenSlice.reducer
+        loginstate:tokenSlice.reducer
     }
 })
 export default storee
