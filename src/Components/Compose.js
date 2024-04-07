@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import { useDispatch, useSelector } from 'react-redux';
+import { Button } from 'react-bootstrap';
 import { EmailSliceActions } from '../Data/Emailstore';
 
 const Compose = () => {
@@ -12,7 +13,7 @@ const Compose = () => {
   const userEmail=useSelector((state)=>state.emailState.userMail)
 
   const handleSend = () => {
-    // Here you can implement your logic to send the email
+    
     console.log('To:', to);
     console.log('Subject:', subject);
     console.log('Body:', editorHtml);
@@ -54,11 +55,12 @@ const Compose = () => {
           value={editorHtml}
           onChange={setEditorHtml}
           placeholder="Compose your email..."
-          style={{ border: '1px solid #ccc', borderRadius: '5px', padding: '10px', minHeight: '200px', marginBottom: '20px' }}
+          style={{ border: '1px solid #ccc', borderRadius: '5px', padding: '10px', minHeight: '400px', marginBottom: '20px' }}
         />
         <div style={{ textAlign: 'right' }}>
-        <button onClick={handleSave} style={{ padding: '10px 20px', backgroundColor: '#4CAF50', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Save</button>
-          <button onClick={handleSend} style={{ padding: '10px 20px', backgroundColor: '#4CAF50', color: '#fff', border: 'none', borderRadius: '5px', cursor: 'pointer' }}>Send</button>
+        <Button variant="outline-secondary" onClick={handleSave}>Save</Button>{' '}
+        <Button variant="outline-secondary" onClick={handleSend} >Send</Button>{' '}
+    
         </div>
       </div>
     </div>

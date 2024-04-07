@@ -8,7 +8,7 @@ const Send = () => {
   return (
     <div
       style={{
-        backgroundColor: "#9575CD",
+        backgroundColor: "#f0f0f0",
         height: "91vh",
         display: "flex",
       }}
@@ -16,7 +16,7 @@ const Send = () => {
       <Card
         style={{
           width: "105rem",
-          backgroundColor: "#E6E6FA",
+          backgroundColor: "#f5f5f5",
           marginLeft: "16px",
           height: "700px",
         }}

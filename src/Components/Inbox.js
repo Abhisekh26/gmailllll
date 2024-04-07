@@ -1,12 +1,16 @@
 import { useSelector } from "react-redux";
 import Card from "react-bootstrap/Card";
+
 import Inboxdisplay from "./Inboxdisplay";
+
 
 function Inbox() {
   const items = useSelector((state) => state.emailState.items);
   const userEmail = useSelector((state) => state.emailState.userMail);
   console.log(items)
   return (
+  
+      
     <div
       style={{
         backgroundColor: "#f0f0f0",
@@ -49,6 +53,7 @@ function Inbox() {
         </Card.Body>
       </Card>
     </div>
+  
   );
 };
 export default Inbox;
