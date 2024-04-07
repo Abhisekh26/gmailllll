@@ -1,8 +1,10 @@
 import { useSelector } from "react-redux";
 import Card from "react-bootstrap/Card";
+import Inboxdisplay from "./Inboxdisplay";
 
 function Inbox() {
-
+  const items = useSelector((state) => state.emailState.items);
+  const userEmail = useSelector((state) => state.emailState.userMail);
   return (
     <div
       style={{
@@ -25,7 +27,20 @@ function Inbox() {
             <strong>Inbox</strong>
           </Card.Title>
           <Card.Text>
-          hello brother
+          {items.map((item) => {
+              if (userEmail === item.sendEmailTo && item.forDraft == false) {
+                return (
+                  <Inboxdisplay
+                    key={item.id}
+                    id={item.id}
+                    variant={item.clicked}
+                    email={item.sendEmailFrom}
+                    subject={item.Subject}
+                    description={item.Description}
+                  />
+                );
+              }
+            })}
           </Card.Text>
         </Card.Body>
       </Card>

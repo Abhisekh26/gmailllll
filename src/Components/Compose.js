@@ -18,7 +18,6 @@ const Compose = () => {
     console.log('Body:', editorHtml);
     const emailData = {
         id: Math.random(),
-    
         sendEmailFrom: userEmail,
         sendEmailTo: to,
         Email: to,
