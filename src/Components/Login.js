@@ -35,9 +35,10 @@ function Login() {
       if(data.ok){
           const result=await data.json()
           console.log(result.idToken)
+          localStorage.setItem("userEmail",result.email)
           localStorage.setItem('idToken',result.idToken)
           dispatch(tokenSliceActions.logIn(result.idToken))
-          
+      
           
          window.location.href="/compose"
       }

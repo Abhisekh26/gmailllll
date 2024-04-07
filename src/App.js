@@ -4,6 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Login from "./Components/Login";
 import Signup from "./Components/Signup";
 import Compose from "./Components/Compose";
+import Sentbox from "./Components/Sentbox";
+import Inbox from "./Components/Inbox";
 function App() {
   var appRouter=createBrowserRouter([
     {
@@ -21,6 +23,14 @@ function App() {
        {
         path:'/compose',
         element:<Compose></Compose>
+       },
+       {
+        path:"/sentbox",
+        element:<Sentbox></Sentbox>
+       },
+       {
+        path:"/inbox",
+        element:<Inbox></Inbox>
        }
       ]
       
