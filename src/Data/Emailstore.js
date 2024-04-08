@@ -25,7 +25,7 @@ const emailSlice = createSlice({
     clickedUpdate(state, action) {
       state.items = state.items.map((item) => {
         if (item.id === action.payload) {
-          return { ...item, clicked: "success" };
+          return { ...item, clicked: "secondary" };
         }
         return item;
       });

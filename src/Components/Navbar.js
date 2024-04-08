@@ -56,7 +56,7 @@ function Navebar() {
                   <NavLink to="/compose" style={{textDecoration:"none",color: "#666666"}}>Compose</NavLink>
                   <NavLink to="/inbox" style={{textDecoration:"none",color: "#666666"}}>Inbox</NavLink>
                   <NavLink to="/sentbox" style={{textDecoration:"none",color: "#666666"}}>Sent</NavLink>
-                  <NavLink to="" style={{textDecoration:"none",color: "#666666"}}>Draft</NavLink>
+                  <NavLink to="/draft" style={{textDecoration:"none",color: "#666666"}}>Draft</NavLink>
                   {/* <Nav.Link href="#action2">Draft</Nav.Link> */}
 
                 

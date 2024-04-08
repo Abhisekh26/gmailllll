@@ -1,22 +1,17 @@
 import { useSelector } from "react-redux";
 import Card from "react-bootstrap/Card";
+import Draftdisplay from "./Draftdisplay";
 
-import Inboxdisplay from "./Inboxdisplay";
+const Draft = () => {
+  const items =useSelector((state) => state.emailState.items);
+  const userEmail =  useSelector((state) => state.emailState.userMail);
 
-
-function Inbox() {
-  const items = useSelector((state) => state.emailState.items);
-  const userEmail = useSelector((state) => state.emailState.userMail);
-  console.log(items)
   return (
-  
-      
     <div
       style={{
         backgroundColor: "#f0f0f0",
         height: "91vh",
         display: "flex",
-        marginLeft: '25rem'
       }}
     >
       <Card
@@ -29,28 +24,27 @@ function Inbox() {
       >
         <Card.Body>
           <Card.Title style={{ textAlign: "center" }}>
-            <strong>Inbox</strong>
+            <strong>Draft</strong>
           </Card.Title>
-         <Card.Text> 
-          {items.map((item) => {
-              if (userEmail === item.sendEmailTo && item.draft === false) {
+          <Card.Text>
+            {items.map((item) => {
+              if (userEmail == item.sendEmailFrom && item.draft === true) {
                 return (
-                  <Inboxdisplay
+                  <Draftdisplay
                     key={item.id}
                     id={item.id}
                     variant={item.clicked}
-                    email={item.sendEmailFrom}
+                    email={item.sendEmailTo}
                     subject={item.Subject}
                     description={item.Description}
                   />
                 );
               }
-              })}
-           </Card.Text>
+            })}
+          </Card.Text>
         </Card.Body>
       </Card>
     </div>
-  
   );
 };
-export default Inbox;
+export default Draft;

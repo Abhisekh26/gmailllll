@@ -6,6 +6,7 @@ import Signup from "./Components/Signup";
 import Compose from "./Components/Compose";
 import Sentbox from "./Components/Sentbox";
 import { useEffect } from "react";
+import Draft from "./Components/Draft";
 import Inbox from "./Components/Inbox";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchData,sendRequest } from "./Data/Apistore";
@@ -37,6 +38,11 @@ function App() {
        {
         path:"/inbox",
         element:<Inbox></Inbox>
+       },
+       {
+        path:"/draft",
+        element:<Draft></Draft>
+
        }
       ]
       

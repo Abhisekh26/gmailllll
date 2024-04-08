@@ -28,9 +28,25 @@ const Compose = () => {
       };
       console.log(emailData)
       dispatch(EmailSliceActions.addMails(emailData))
+
+      setTo("")
+      setEditorHtml("")
+      setSubject("")
   };
   function handleSave(){
-
+    console.log('To:', to);
+    console.log('Subject:', subject);
+    console.log('Body:', editorHtml);
+    const emailData = {
+      id: Math.random(),
+      draft:true,
+      sendEmailFrom: userEmail,
+      sendEmailTo: to,
+      Email: to,
+      Subject: subject,
+      Description: editorHtml,
+    };
+    dispatch(EmailSliceActions.addMails(emailData))
   }
   return (
     <div style={{ marginLeft: '24rem', marginRight: 'auto', maxWidth: '800px', padding: '20px' }}>
