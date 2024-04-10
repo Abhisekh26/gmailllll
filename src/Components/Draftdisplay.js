@@ -1,13 +1,10 @@
 import ListGroup from "react-bootstrap/ListGroup";
 import Accordion from "react-bootstrap/Accordion";
 import { Button, Col, Container, Row } from "react-bootstrap";
-
 import { useDispatch, useSelector } from "react-redux";
 import { EmailSliceActions } from "../Data/Emailstore";
 const Draftdisplay = (props) => {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.emailState.items);
-
   const handleItemClick = () => {
     dispatch(EmailSliceActions.clickedUpdate(props.id));
   };
@@ -15,8 +12,8 @@ const Draftdisplay = (props) => {
   const handleDelete = (id) => {
     dispatch(EmailSliceActions.deleteMail(id));
   };
-  
-  console.log(props)
+
+  console.log(props);
 
   return (
     <div style={{ marginBottom: "20px" }}>
@@ -43,10 +40,10 @@ const Draftdisplay = (props) => {
                       style={{ padding: "8px", textAlign: "right" }}
                     >
                       <Button
-                        variant="outline-danger"
+                        variant="secondary"
                         onClick={() => handleDelete(props.id)}
                       >
-                        <strong> Delete</strong>
+                      <strong>Delete</strong>
                       </Button>
                     </Col>
                   </Row>

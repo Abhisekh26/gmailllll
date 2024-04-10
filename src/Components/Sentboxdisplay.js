@@ -8,8 +8,7 @@ import { EmailSliceActions } from "../Data/Emailstore";
 
 const Sentboxdisplay = (props) => {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.emailState.items);
- console.log(props)
+     console.log(props)
   const handleItemClick = () => {
     dispatch(EmailSliceActions.clickedUpdate(props.id));
     
@@ -43,11 +42,12 @@ const Sentboxdisplay = (props) => {
                       md={4}
                       style={{ padding: "8px", textAlign: "right" }}
                     >
+                     
                       <Button
-                        variant="outline-danger"
+                        variant="secondary"
                         onClick={() => handleDelete(props.id)}
                       >
-                        <strong> Delete</strong>
+                      <strong>Delete</strong>
                       </Button>
                     </Col>
                   </Row>

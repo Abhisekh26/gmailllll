@@ -5,7 +5,9 @@ import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 function Signup() {
+  const navigation=useNavigate()
     const emailref=useRef()
     const passwordref=useRef()
     const signUpHandler= async()=>{
@@ -32,7 +34,7 @@ function Signup() {
       emailref.current.value=""
       passwordref.current.value=""
       alert("Welcome User")
-      window.location.href="/login"
+      navigation("/login")
   }
   else {
       alert("Authentication Failed")

@@ -1,67 +1,131 @@
-import React from 'react'
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import { NavLink, Outlet } from 'react-router-dom';
-
-import Offcanvas from 'react-bootstrap/Offcanvas';
+import React from "react";
+import Button from "react-bootstrap/Button";
+import Container from "react-bootstrap/Container";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import { NavLink, Outlet } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import Offcanvas from "react-bootstrap/Offcanvas";
+import { useSelector } from "react-redux";
 function Navebar() {
-  function signOutHandler(){
-    localStorage.removeItem('userEmail')
-    localStorage.removeItem('idToken')
-    window.location.href="/login"
+  const logInStatus = useSelector((state) => state.loginstate.loggedIn);
+  const navigation=useNavigate()
+  console.log(logInStatus);
+  function signOutHandler() {
+    localStorage.removeItem("userEmail");
+    localStorage.removeItem("idToken");
+    navigation("/login");
   }
- return (
-    <div>
-
+  return (
+    <div style={{ backgroundColor: "#f0f0f0", padding: "10px 0" }}>
       {[false].map((expand) => (
-        
         <Navbar key={expand} expand={expand} className="bg-body-tertiary mb-3">
-
-     
-          <Container fluid>
-            <NavLink to="/" style={{textDecoration:"none"}}>
-            <Navbar.Brand >Mail Box</Navbar.Brand>
+          <Container
+            fluid
+            style={{
+              display: "flex",
+              justifyContent: "space-between",
+              alignItems: "center",
+            }}
+          >
+            <NavLink to="/" style={{ textDecoration: "none" }}>
+              <Navbar.Brand>Mail Box</Navbar.Brand>
             </NavLink>
-            <div className="d-flex justify-content-end flex-grow-1" >
-               
+            <div className="d-flex justify-content-end flex-grow-1">
+              {!logInStatus && (
                 <NavLink to="/signup">
-            <Button variant="secondary" className="me-2">Signup</Button>
-            </NavLink>
-           
-       
-            <NavLink to ="/login">
-            <Button variant="secondary" className="me-2">Log In</Button>
-            </NavLink>
-          
-                
-           
-            <Button variant="secondary"  onClick={signOutHandler}>Log Out</Button>
-            
+                  <Button variant="secondary" className="me-2">
+                    Signup
+                  </Button>
+                </NavLink>
+              )}
+
+              {!logInStatus && (
+                <NavLink to="/login">
+                  <Button variant="secondary" className="me-2">
+                    Log In
+                  </Button>
+                </NavLink>
+              )}
+
+              {logInStatus && (
+                <Button variant="secondary" onClick={signOutHandler}>
+                  Log Out
+                </Button>
+              )}
             </div>
-            <Navbar.Toggle  aria-controls={`offcanvasNavbar-expand-${expand}`} /> 
+            {logInStatus && (
+              <Navbar.Toggle
+                aria-controls={`offcanvasNavbar-expand-${expand}`}
+              />
+            )}
             <Navbar.Offcanvas
               id={`offcanvasNavbar-expand-${expand}`}
               aria-labelledby={`offcanvasNavbarLabel-expand-${expand}`}
               placement="start"
             >
-              {/* <Offcanvas.Header closeButton>
-                <Offcanvas.Title id={`offcanvasNavbarLabel-expand-${expand}`}>
-                  Mail Box
-                </Offcanvas.Title> *
-              </Offcanvas.Header> */}
+              {/*   "justify-content-end flex-grow-1 pe-3" */}
               <Offcanvas.Body>
-                <Nav className="justify-content-end flex-grow-1 pe-3">
-                  <NavLink to="/compose" style={{textDecoration:"none",color: "#666666"}}>Compose</NavLink>
-                  <NavLink to="/inbox" style={{textDecoration:"none",color: "#666666"}}>Inbox</NavLink>
-                  <NavLink to="/sentbox" style={{textDecoration:"none",color: "#666666"}}>Sent</NavLink>
-                  <NavLink to="/draft" style={{textDecoration:"none",color: "#666666"}}>Draft</NavLink>
+                <Nav className="flex-column">
+                  <NavLink to="/compose" className="nav-link">
+                    {" "}
+                    <Button
+                      variant="outline-secondary"
+                      style={{
+                        width: "100%",
+                        marginBottom: "10px",
+                        borderRadius: "0",
+                        border: "none",
+                        fontSize: "1.2rem",
+                      }}
+                    >
+                      Compose
+                    </Button>{" "}
+                  </NavLink>
+                  <NavLink to="/inbox" className="nav-link">
+                    <Button
+                      variant="outline-secondary"
+                      style={{
+                        width: "100%",
+                        marginBottom: "10px",
+                        borderRadius: "0",
+                        border: "none",
+                        fontSize: "1.2rem",
+                      }}
+                    >
+                      Inbox
+                    </Button>
+                  </NavLink>
+                  <NavLink to="/sentbox" className="nav-link">
+                    <Button
+                      variant="outline-secondary"
+                      style={{
+                        width: "100%",
+                        marginBottom: "10px",
+                        borderRadius: "0",
+                        border: "none",
+                        fontSize: "1.2rem",
+                      }}
+                    >
+                      Sent
+                    </Button>
+                  </NavLink>
+                  <NavLink to="/draft" className="nav-link">
+                    <Button
+                      variant="outline-secondary"
+                      style={{
+                        width: "100%",
+                        marginBottom: "10px",
+                        borderRadius: "0",
+                        border: "none",
+                        fontSize: "1.2rem",
+                      }}
+                    >
+                      Draft
+                    </Button>
+                  </NavLink>
                   {/* <Nav.Link href="#action2">Draft</Nav.Link> */}
-
-                
                 </Nav>
-                
               </Offcanvas.Body>
             </Navbar.Offcanvas>
           </Container>
@@ -69,7 +133,7 @@ function Navebar() {
       ))}
       <Outlet></Outlet>
     </div>
-  )
+  );
 }
 
-export default Navebar
+export default Navebar;

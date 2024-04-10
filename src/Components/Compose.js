@@ -47,6 +47,9 @@ const Compose = () => {
       Description: editorHtml,
     };
     dispatch(EmailSliceActions.addMails(emailData))
+    setTo("")
+    setEditorHtml("")
+    setSubject("")
   }
   return (
     <div style={{ marginLeft: '24rem', marginRight: 'auto', maxWidth: '800px', padding: '20px' }}>

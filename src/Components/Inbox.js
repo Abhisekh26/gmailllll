@@ -13,10 +13,10 @@ function Inbox() {
       
     <div
       style={{
-        backgroundColor: "#f0f0f0",
+        backgroundColor: "#f0f0f0",   
         height: "91vh",
         display: "flex",
-        marginLeft: '25rem'
+        // marginLeft: '25rem'
       }}
     >
       <Card

@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { EmailSliceActions } from "../Data/Emailstore";
 const Inboxdisplay = (props) => {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.emailState.items);
+  console.log(props)
 
   const handleItemClick = () => {
     dispatch(EmailSliceActions.clickedUpdate(props.id));
@@ -16,9 +16,7 @@ const Inboxdisplay = (props) => {
     dispatch(EmailSliceActions.deleteMail(id));
   };
   
-  console.log(props)
-
-  return (
+   return (
     <div style={{ marginBottom: "20px" }}>
       <ListGroup variant="flush">
         <ListGroup.Item
@@ -42,11 +40,11 @@ const Inboxdisplay = (props) => {
                       md={4}
                       style={{ padding: "8px", textAlign: "right" }}
                     >
-                      <Button
-                        variant="outline-danger"
+                       <Button
+                        variant="secondary"
                         onClick={() => handleDelete(props.id)}
                       >
-                        <strong> Delete</strong>
+                      <strong>Delete</strong>
                       </Button>
                     </Col>
                   </Row>

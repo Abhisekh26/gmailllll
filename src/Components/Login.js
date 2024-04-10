@@ -5,10 +5,12 @@ import Col from 'react-bootstrap/Col';
 import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import { useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import { tokenSliceActions } from "../Data/Tokenslice";
 
 function Login() {
+  const navigation=useNavigate()
     const emailref=useRef()
     const passwordref=useRef()
     const dispatch=useDispatch()
@@ -38,16 +40,12 @@ function Login() {
           localStorage.setItem("userEmail",result.email)
           localStorage.setItem('idToken',result.idToken)
           dispatch(tokenSliceActions.logIn(result.idToken))
-      
-          
-         window.location.href="/compose"
+         navigation("/compose")
       }
   }
 
 
-    
-
-  return (
+     return (
     <div style={{  backgroundColor: "#f1f3f4",minHeight: "100vh" }}>
           <center style={{paddingTop: "160px" }}> 
         <Card style={{ width: "52rem" ,height:"14rem",boxShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",borderRadius: "12px", backgroundColor: "#ffffff" }}>
